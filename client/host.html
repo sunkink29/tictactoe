@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script type = "text/javascript" 
+            src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+         </script>
+    </head>
+    <body>
+        <h1>Host New Game</h1>
+        {{ if .New }}
+            <form action="/new" method="POST">
+                Username:<br>
+                <input type="text" name="username"><br>
+                <input type="submit">
+            </form>
+        {{ else }}
+            <h4>Waiting for other player</h4>
+            <script>
+                setInterval( function() {
+                    $.get( "/checkHost", null, function(data) {
+                        if (data == "true") {
+                                window.location = "/play"
+                        }
+                    })
+                }, 1000)
+            </script>
+        {{ end }}
+    </body>
+</html>

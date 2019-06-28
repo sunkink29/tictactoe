@@ -1,0 +1,15 @@
+<html>
+    <head></head>
+    <body>
+        {{ if .EnterName }}
+            <form method="POST">
+                    Username:<br>
+                    <input type="text" name="username"><br>
+                    <input type="submit">
+            </form>
+        {{ else }}
+            <h1>Join Game</h1>
+            {{ joinList }}
+        {{ end }}
+    </body>
+</html>
